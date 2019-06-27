@@ -46,6 +46,7 @@ We assume ADFS 2.0 or greater is used as an IdP.
   - [Falling back authentication on LDAP login form](#falling-back-authentication-on-ldap-login-form)
   - [Allowing users to update their AD password](#allowing-users-to-update-their-ad-password)
   - [Writing LDAP data from SilverStripe](#writing-ldap-data-from-silverstripe)
+  - [Additional GET Query Params for SAML](#additional-get-query-params-for-saml)
 - [Resources](#resources)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -557,6 +558,18 @@ If you enable `update_ldap_from_local` saving a user in the Security section of 
 a Member object will push up the mapped fields to LDAP, assuming that Member record has a `GUID` field.
 
 See "Map AD attributes to Member fields" section above for more information on mapping fields.
+
+### Additional GET Query Params for SAML
+example:
+```yaml
+SAMLAuthenticator:
+  additional_get_query_params:
+    someGetQueryParameter: 'value'
+    AnotherParameter: 'differentValue'
+```
+
+this configuration allows you to add two GET query parameters to endpoint request URL:
+`https://your-idp.com/singleSignOnService/saml2?someGetQueryParameter=value&AnotherParameter=differentValue&SAMLRequest=XYZ....`
 
 ## Resources
 
